@@ -3,6 +3,7 @@ import build.BuildConfig
 import build.BuildDimensions
 import build.BuildTypes
 import com.android.build.gradle.ProguardFiles
+import falvors.BuildFlavor
 import plugs.BuildPlugins
 import release.ReleaseConfig
 import test.TestBuildConfig
@@ -56,7 +57,10 @@ android {
     flavorDimensions.add(BuildDimensions.APP)
     flavorDimensions.add(BuildDimensions.STORE)
     productFlavors{
-
+        BuildFlavor.Google.create(this)
+        BuildFlavor.Huawei.create(this)
+        BuildFlavor.Driver.create(this)
+        BuildFlavor.Client.create(this)
     }
 
     compileOptions {

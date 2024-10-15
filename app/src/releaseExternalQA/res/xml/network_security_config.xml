@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- Base configuration for all domains -->
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">example.com</domain>
+        <!-- Example of a specific domain that allows HTTP -->
+        <domain cleartextTrafficPermitted="true">http-only.com</domain>
+    </domain-config>
+
+    <!-- Allow HTTP traffic for all local addresses -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">localhost</domain>
+        <domain includeSubdomains="true">127.0.0.1</domain>
+        <domain includeSubdomains="true">::1</domain>
+    </domain-config>
+
+    <domain-config>
+        <domain includeSubdomains="true">secure.example.com</domain>
+        <pin-set expiration="2024-12-31">
+            <pin digest="SHA-256">base64_encoded_public_key_hash</pin>
+        </pin-set>
+    </domain-config>
+</network-security-config>
